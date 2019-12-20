@@ -1,0 +1,356 @@
+{
+    "type": "CatalystScreen",
+    "components": [
+        {
+            "type": "PersonalizedMessageComponent",
+            "data": {
+                "image": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    },
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CarouselComponent",
+            "data": {
+                "bgColor": "",
+                "cards": [
+                    {
+                        "type": "HighlightMessageComponent",
+                        "data": {
+                            "image": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                },
+                                {
+                                    "type": "",
+                                    "value": ""
+                                },
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ],
+                            "bgImage": ""
+                        }
+                    },
+                    {
+                        "type": "RatingCardComponent",
+                        "data": {
+                            "bgImage": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                },
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "RecommendationContainerComponent",
+            "data": {
+                "bgColor": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "VerticalRecommendationCardComponent",
+                        "data": {
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ],
+                            "image": "",
+                            "tags": [
+                                ""
+                            ],
+                            "button": {
+                                "text": "",
+                                "action": ""
+                            }
+                        }
+                    },
+                    {
+                        "type": "HorizontalRecommendationCardComponent",
+                        "data": {
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ],
+                            "image": "",
+                            "tags": [
+                                ""
+                            ],
+                            "button": {
+                                "text": "",
+                                "action": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ProductRatingComponent",
+            "data": {
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "ratings": [
+                    {
+                        "platform": "",
+                        "rating": ""
+                    },
+                    {
+                        "platform": "",
+                        "rating": ""
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CenteredTitledContainerComponent",
+            "data": {
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "bgColor": "",
+                "components": [
+                    {
+                        "type": "CheckListComponent",
+                        "data": {
+                            "isChecked": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "type": "CheckListComponent",
+                        "data": {
+                            "isChecked": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CenteredTitledContainerComponent",
+            "data": {
+                "bgColor": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "CenteredAlignedComponent",
+                        "data": {
+                            "image": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CenteredTitledContainerComponent",
+            "data": {
+                "bgColor": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "CarouselComponent",
+                        "data": {
+                            "bgColor": "",
+                            "cards": [
+                                {
+                                    "type": "StepCardComponent",
+                                    "data": {
+                                        "texts": [
+                                            {
+                                                "type": "",
+                                                "text": ""
+                                            },
+                                            {
+                                                "type": "",
+                                                "text": ""
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "RecommendationContainerComponent",
+            "data": {
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "TestimonialComponent",
+                        "data": {
+                            "bgImage": "",
+                            "rating": "",
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "RecommendationContainerComponent",
+            "data": {
+                "bgColor": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "VerticalRecommendationCardComponent",
+                        "data": {
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ],
+                            "image": "",
+                            "tags": [
+                                ""
+                            ],
+                            "button": {
+                                "text": "",
+                                "action": ""
+                            }
+                        }
+                    },
+                    {
+                        "type": "HorizontalRecommendationCardComponent",
+                        "data": {
+                            "texts": [
+                                {
+                                    "type": "",
+                                    "value": ""
+                                }
+                            ],
+                            "image": "",
+                            "tags": [
+                                ""
+                            ],
+                            "button": {
+                                "text": "",
+                                "action": ""
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "CenteredTitledContainerComponent",
+            "data": {
+                "bgColor": "",
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "components": [
+                    {
+                        "type": "ImageGridComponent",
+                        "data": {
+                            "images": [
+                                ""
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "ScreenFooterComponent",
+            "data": {
+                "texts": [
+                    {
+                        "type": "",
+                        "value": ""
+                    }
+                ],
+                "images": [
+                    "",
+                    "",
+                    ""
+                ]
+            }
+        }
+    ]
+}
