@@ -7,12 +7,14 @@ import MainScreen from '../screens/MainScreen'
 import CarouselPOCScreen from '../screens/CarouselPOCScreen';
 import ThirdScreen from "../screens/ThirdScreen";
 import SnapCarouselScreen from '../screens/SpanCarouselScreen'
+import CounterReduxScreen from '../screens/CounterReduxScreen';
 const HomeNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BoldText: BoldTextScreen,
     CarouselPOC: CarouselPOCScreen,
     ThirdScreen:ThirdScreen,
-    SnapCarousel:SnapCarouselScreen
+    SnapCarousel:SnapCarouselScreen,
+    CounterRedux:CounterReduxScreen
 }, {
     defaultNavigationOptions: {
         headerStyle: {

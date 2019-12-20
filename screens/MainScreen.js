@@ -38,7 +38,7 @@ const MainScreen = props => {
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={() => {
-                        props.navigation.navigate({ routeName: "SnapCarousel" })
+                        props.navigation.navigate({ routeName: "CounterRedux" })
                     }}>
                     <Text> Go To Counter With Redux</Text>
                 </TouchableOpacity>
