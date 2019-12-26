@@ -8,13 +8,19 @@ import CarouselPOCScreen from '../screens/CarouselPOCScreen';
 import ThirdScreen from "../screens/ThirdScreen";
 import SnapCarouselScreen from '../screens/SpanCarouselScreen'
 import CounterReduxScreen from '../screens/CounterReduxScreen';
+import CatalystScreen from '../screens/CatalystComponents';
+import RerenderOptScreen from '../screens/RerenderOptScreen';
+import CarouselContainer from '../components/Carousel/CarouselContainer';
 const HomeNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BoldText: BoldTextScreen,
     CarouselPOC: CarouselPOCScreen,
     ThirdScreen:ThirdScreen,
     SnapCarousel:SnapCarouselScreen,
-    CounterRedux:CounterReduxScreen
+    CounterRedux:CounterReduxScreen,
+    CatalystScreen:CatalystScreen,
+    RerenderOptScreen:RerenderOptScreen,
+    CarouselContainer:CarouselContainer
 }, {
     defaultNavigationOptions: {
         headerStyle: {

@@ -42,6 +42,27 @@ const MainScreen = props => {
                     }}>
                     <Text> Go To Counter With Redux</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "CatalystScreen" })
+                    }}>
+                    <Text> Go To Catalyst Screen</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "RerenderOptScreen" })
+                    }}>
+                    <Text> ReRender Optimisation</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "CarouselContainer" })
+                    }}>
+                    <Text> Carousel Container Component</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
