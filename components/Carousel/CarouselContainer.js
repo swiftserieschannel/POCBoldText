@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Dimensions, Animated } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Pagination from './pagination/Pagination'
 import { pure } from 'recompose';
-let _this;
+
 
 export default class CarouselContainer extends Component {
 
@@ -12,31 +12,24 @@ export default class CarouselContainer extends Component {
         //progressViewStyle: styles.progressView,
         isProgressVisible: true,
         isPaginationVisible: true,
-        dataSource: ["1", "2","3","4","5"],
+        dataSource: ["1", "2", "3", "4", "5"],
         //paginationContainerStyle: styles.paginationContainerStyle,
         //dotContainerStyle: styles.dotContainerStyle,
         //dotStyle: styles.dotStyle,
         autoplay: false,
-        autoplayDelay: 0,
+        autoplayDelay: 2000,
         renderItem: this._renderItem,
     }
-
-    // state = {
-    //     activeSlide: 0
-    // }
 
     constructor(props) {
         super(props)
         this.progressAnimation = new Animated.Value(0);
         this.currentVisibleIndex = 0
         this.CONTAINER_WIDTH = Dimensions.get('screen').width
-        _this = this;
     }
 
     componentDidMount() {
-        if (this.props.isProgressVisible) {
-            this.StartProgressBarAnimation(0)
-        }
+        this.props.isProgressVisible ? this.StartProgressBarAnimation(0) : null
     }
 
     componentWillUnmount() {
@@ -60,12 +53,10 @@ export default class CarouselContainer extends Component {
     }
 
     get pagination() {
-        // const { activeSlide } = this.state;
         return (
             <Pagination
                 ref={v => this.slider1Pagination = v}
                 dotsLength={this.props.dataSource.length || 4}
-                // activeDotIndex={activeSlide}
                 containerStyle={this.props.paginationContainerStyle || styles.paginationContainerStyle}
                 dotContainerStyle={this.props.dotContainerStyle || styles.dotContainerStyle}
                 dotStyle={this.props.dotStyle || styles.dotStyle}
@@ -86,38 +77,40 @@ export default class CarouselContainer extends Component {
     }
 
     _renderSnapCarousel = pure(() => {
-        console.log("in _renderSnapCarousel", _this);
         return <Carousel
             loopClonesPerSide={5}
-            ref={(c) => { _this._carousel = c; }}
-            data={_this.props.dataSource}
-            renderItem={_this.props._renderItem || _this._renderItem}
-            sliderWidth={_this.CONTAINER_WIDTH}
-            itemWidth={_this.CONTAINER_WIDTH}
+            ref={(c) => { this._carousel = c; }}
+            data={this.props.dataSource}
+            renderItem={this.props._renderItem || this._renderItem}
+            sliderWidth={this.CONTAINER_WIDTH}
+            itemWidth={this.CONTAINER_WIDTH}
             layout={'default'}
-            autoplay={_this.props.autoplay}
-            autoplayDelay={_this.props.autoplayDelay}
+            autoplay={this.props.autoplay}
+            autoplayDelay={this.props.autoplayDelay}
             loop={true}
             onSnapToItem={(index) => {
                 this.currentIndex = index
-                // this.setState({ activeSlide: index })
                 this.slider1Pagination.setActiveIndexDot(index)
                 // if progressview visible then restart progress animation
-                if (_this.props.isProgressVisible) {
-                    _this.progressAnimation.stopAnimation();
-                    _this.StartProgressBarAnimation(0)
+                if (this.props.isProgressVisible) {
+                    this.progressAnimation.stopAnimation();
+                    this.StartProgressBarAnimation(0)
                 }
             }}
             onTouchStart={(event) => {
-                this.isProgressStopped = true
-                this.progressAnimation.stopAnimation(number => this.animationValue = number)
+                if (this.props.isProgressVisible) {
+                    this.isProgressStopped = true
+                    this.progressAnimation.stopAnimation(number => this.animationValue = number)
+                }
             }}
-            onScrollEndDrag={(event) => { //working
-                this.StartProgressBarAnimation(this.animationValue)
+            onScrollEndDrag={(event) => {
+                this.props.isProgressVisible ? this.StartProgressBarAnimation(this.animationValue) : null
             }}
             onTouchEndCapture={(event) => {
-                this.isProgressStopped = false
-                this.StartProgressBarAnimation(this.animationValue)
+                if (this.props.isProgressVisible) {
+                    this.isProgressStopped = false
+                    this.StartProgressBarAnimation(this.animationValue)
+                }
             }}
         >
 
@@ -129,9 +122,8 @@ export default class CarouselContainer extends Component {
         const progressWidth = this.progressAnimation.interpolate(
             {
                 inputRange: [0, 1],
-                outputRange: [0, this.CONTAINER_WIDTH - 0]
+                outputRange: [0, this.CONTAINER_WIDTH]
             });
-        console.log("in render ", this.props.isPaginationVisible);
         return (
             <View style={[styles.container]} onLayout={(event) => {
                 this.CONTAINER_WIDTH = event.nativeEvent.layout.width
