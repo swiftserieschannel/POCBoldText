@@ -12,7 +12,7 @@ export default class CarouselContainer extends Component {
         //progressViewStyle: styles.progressView,
         isProgressVisible: true,
         isPaginationVisible: true,
-        dataSource: ["1", "2", "3", "4", "5"],
+        dataSource: ["testing1","testing2"],
         //paginationContainerStyle: styles.paginationContainerStyle,
         //dotContainerStyle: styles.dotContainerStyle,
         //dotStyle: styles.dotStyle,
@@ -63,6 +63,8 @@ export default class CarouselContainer extends Component {
                 inactiveDotOpacity={0.4}
                 inactiveDotScale={0.6}
                 carouselRef={this._carousel}
+                dotColor={"#008DF6"}
+                inactiveDotColor={"#E0E0E0"}
             />
         );
     }
@@ -90,7 +92,7 @@ export default class CarouselContainer extends Component {
             loop={true}
             onSnapToItem={(index) => {
                 this.currentIndex = index
-                this.slider1Pagination.setActiveIndexDot(index)
+                this.props.isPaginationVisible ? this.slider1Pagination.setActiveIndexDot(index) : null
                 // if progressview visible then restart progress animation
                 if (this.props.isProgressVisible) {
                     this.progressAnimation.stopAnimation();
@@ -143,13 +145,13 @@ const styles = StyleSheet.create({
         marginTop: 8,
         borderRadius: 8,
         overflow: "hidden",
-        backgroundColor: "#FFF",
-        marginHorizontal: 18
+        backgroundColor: "#E0E0E0",
+        marginHorizontal: 15
     },
     progressView: {// default styles for progress view
         marginHorizontal: 0,
         height: 3,
-        backgroundColor: 'rgba(52, 140, 235,1)',
+        backgroundColor: '#008DF6',
         width: '0%',
     },
     paginationContainerStyle: {// default styles for paginationContainer view
@@ -164,11 +166,11 @@ const styles = StyleSheet.create({
         margin: 0
     },
     dotStyle: {
-        width: 10,
-        height: 10,
+        width: 6,
+        height: 6,
         borderRadius: 5,
         marginHorizontal: 0,
-        backgroundColor: 'rgba(52, 140, 235,1)'
+        backgroundColor: '#E0E0E0'
     }
 });
 

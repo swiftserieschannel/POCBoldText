@@ -17,7 +17,7 @@ const PersonalizedMessageComponent = props => {
             : null
     }
 
-
+    console.log( <TextView texts={texts[0]} />);
     return (
         <View style={{ ...props.style }, styles.component}>
             <Image source={{ uri: props.image }} />
