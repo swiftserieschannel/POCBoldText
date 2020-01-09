@@ -1,6 +1,11 @@
 import React from 'react';
 import { View, SafeAreaView, StyleSheet } from 'react-native';
 import PersonalizedMessageComponent from '../components/PersonalizedMessageComponent'
+
+
+
+
+
 const CatalystComponents = props => {
     return (
 

@@ -63,6 +63,20 @@ const MainScreen = props => {
                     }}>
                     <Text> Carousel Container Component</Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "RatingScreen" })
+                    }}>
+                    <Text> Rating Screen  Component</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "TextComponent" })
+                    }}>
+                    <Text> Text Component</Text>
+                </TouchableOpacity>
             </View>
         </View>
     );

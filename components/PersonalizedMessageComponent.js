@@ -4,18 +4,18 @@ import Styles from '../stylesheets/commonstyles';
 
 
 
+const TextView = props => {
+    return (props.texts.text != undefined && props.texts.text.trim().length > 0)
+        ? (<Text style={ [styles.text,Styles.getTextFont(props.texts.type) ]}>
+            {props.texts.text}</Text>)
+        : null
+}
+
 
 const PersonalizedMessageComponent = props => {
 
-    const data = props.data;
-    const texts = data.texts;
-
-    const TextView = props => {
-        return (props.texts.text != undefined && props.texts.text.trim().length > 0)
-            ? (<Text style={ [styles.text,Styles.getTextFont(props.texts.type) ]}>
-                {props.texts.text}</Text>)
-            : null
-    }
+    const data = props.data ;
+    const texts = data.texts || {};
 
     console.log( <TextView texts={texts[0]} />);
     return (

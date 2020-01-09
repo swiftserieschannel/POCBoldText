@@ -11,23 +11,27 @@ import CounterReduxScreen from '../screens/CounterReduxScreen';
 import CatalystScreen from '../screens/CatalystComponents';
 import RerenderOptScreen from '../screens/RerenderOptScreen';
 import CarouselContainer from '../components/Carousel/CarouselContainer';
+import RatingScreen from '../screens/RatingScreen';
+import TextComponent from '../screens/TextComponent';
 const HomeNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BoldText: BoldTextScreen,
     CarouselPOC: CarouselPOCScreen,
-    ThirdScreen:ThirdScreen,
-    SnapCarousel:SnapCarouselScreen,
-    CounterRedux:CounterReduxScreen,
-    CatalystScreen:CatalystScreen,
-    RerenderOptScreen:RerenderOptScreen,
-    CarouselContainer:CarouselContainer
+    ThirdScreen: ThirdScreen,
+    SnapCarousel: SnapCarouselScreen,
+    CounterRedux: CounterReduxScreen,
+    CatalystScreen: CatalystScreen,
+    RerenderOptScreen: RerenderOptScreen,
+    CarouselContainer: CarouselContainer,
+    RatingScreen: RatingScreen,
+    TextComponent: TextComponent,
 }, {
     defaultNavigationOptions: {
         headerStyle: {
             backgroundColor: Platform.OS === 'android' ? '#00e6e6' : 'white',
         },
         headerTintColor: Platform.OS === 'ios' ? 'black' : 'white',
-        headerTitleStyle:{
+        headerTitleStyle: {
             fontWeight: "bold",
         }
     }
