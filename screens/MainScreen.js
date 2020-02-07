@@ -77,6 +77,14 @@ const MainScreen = props => {
                     }}>
                     <Text> Text Component</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "ReactNativeTabViewScreen" })
+                    }}>
+                    <Text> ReactNativeTabViewScreen </Text>
+                </TouchableOpacity>
             </View>
         </View>
     );

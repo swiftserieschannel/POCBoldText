@@ -13,6 +13,7 @@ import RerenderOptScreen from '../screens/RerenderOptScreen';
 import CarouselContainer from '../components/Carousel/CarouselContainer';
 import RatingScreen from '../screens/RatingScreen';
 import TextComponent from '../screens/TextComponent';
+import ReactNativeTabViewScreen from '../screens/ReactNativeTabViewScreen'
 const HomeNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BoldText: BoldTextScreen,
@@ -25,6 +26,7 @@ const HomeNavigator = createStackNavigator({
     CarouselContainer: CarouselContainer,
     RatingScreen: RatingScreen,
     TextComponent: TextComponent,
+    ReactNativeTabViewScreen: ReactNativeTabViewScreen,
 }, {
     defaultNavigationOptions: {
         headerStyle: {
