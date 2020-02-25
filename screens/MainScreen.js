@@ -85,6 +85,20 @@ const MainScreen = props => {
                     }}>
                     <Text> ReactNativeTabViewScreen </Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "AnimationLoopingExample" })
+                    }}>
+                    <Text> AnimationLoopingExample </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => {
+                        props.navigation.navigate({ routeName: "BottomSheetAnimation" })
+                    }}>
+                    <Text> BottomSheetAnimation </Text>
+                </TouchableOpacity>
             </View>
         </View>
     );

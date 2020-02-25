@@ -14,6 +14,8 @@ import CarouselContainer from '../components/Carousel/CarouselContainer';
 import RatingScreen from '../screens/RatingScreen';
 import TextComponent from '../screens/TextComponent';
 import ReactNativeTabViewScreen from '../screens/ReactNativeTabViewScreen'
+import AnimationLoopingExample from '../screens/AnimationLoopingExample'
+import BottomSheetAnimation from '../screens/BottomSheetAnimation'
 const HomeNavigator = createStackNavigator({
     MainScreen: MainScreen,
     BoldText: BoldTextScreen,
@@ -27,6 +29,8 @@ const HomeNavigator = createStackNavigator({
     RatingScreen: RatingScreen,
     TextComponent: TextComponent,
     ReactNativeTabViewScreen: ReactNativeTabViewScreen,
+    AnimationLoopingExample: AnimationLoopingExample,
+    BottomSheetAnimation: BottomSheetAnimation,
 }, {
     defaultNavigationOptions: {
         headerStyle: {

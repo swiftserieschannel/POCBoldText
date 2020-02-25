@@ -65,7 +65,7 @@ export default class SnapCarouselScreen extends Component {
                 containerStyle={{ height:20,paddingVertical:10,marginTop: -30, marginHorizontal: 0}}
                 dotContainerStyle={{height:0,padding:0,margin:0}}
                 dotStyle={{
-                    width: 10,
+                    width: 15,
                     height: 10,
                     borderRadius: 5,
                     marginHorizontal: 0,
@@ -74,10 +74,17 @@ export default class SnapCarouselScreen extends Component {
                 }}
                 inactiveDotStyle={{
                     // Define styles for inactive dots here
+                    width: 10,
+                    height: 10,
+                    borderRadius: 5,
                 }}
                 inactiveDotOpacity={0.4}
                 inactiveDotScale={0.6}
                 carouselRef={this._carousel}
+                inactiveDotScale={1}
+                animatedFriction={8}
+                // animatedDuration={}
+                animatedDuration={1000000}
             />
         );
     }
@@ -124,22 +131,22 @@ export default class SnapCarouselScreen extends Component {
                     }}
                     onTouchStart={(event) => {
                         this.isProgressStopped = true
-                        console.log("mssage from on touch start");
+                        console.log("mssage from on touch start"+event);
                         this.Animation.stopAnimation(number => this.animationValue = number)
                     }}
                     onScrollEndDrag={(event) => { //working
-                        console.log("mssage from on scroll end drag");
+                        console.log("mssage from on scroll end drag"+event);
                         this.StartProgressBarAnimation(this.animationValue)
                     }}
                     onTouchEndCapture={(event) => {
                         console.log("tocuhe end");
-                        console.log("mssage from on touch end");
+                        console.log("mssage from on touch end"+event);
                         console.log(this.animationValue);
                         this.isProgressStopped = false
                         this.StartProgressBarAnimation(this.animationValue)
                     }}
                     onScrollAnimationEnd={(event) => {
-                        console.log("mssage from on animation scroll touch end");
+                        console.log("mssage from on animation scroll touch end"+event);
                     }}
                 >
 
