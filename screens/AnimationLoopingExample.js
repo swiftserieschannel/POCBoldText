@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Animated, } from 'react-native'
+import { View, StyleSheet, Animated, Text } from 'react-native'
 
 
 
 
 var currentProgressAnimation = 0
-var barMAXWidth = 0
+// var barMAXWidth = 0
 const ProgressBarsRow = props => {
 
     const totalBars = parseInt(props.totalBars || 4)
@@ -21,14 +21,19 @@ const ProgressBarsRow = props => {
     // const [currentWidth,setCurrentWidth] = useState(0)
     // const currentWidth = 0
     // var isLayoutCalculated = false
-    // const [barMAXWidth,setBarMAXWidth] = useState(0)
-    const [isLayoutCalculated,setIsLayoutCalculated] = useState(false)
-
+    const [barMAXWidth, setBarMAXWidth] = useState(0)
+    const [isLayoutCalculated, setIsLayoutCalculated] = useState(false)
+    const [currentProgressCount, setcurrentProgressCount] = useState(0)
+    // var currentProgressCount = 0
+    const [isAnimationStarted, setIsAnimationStarted] = useState(false)
     const [value] = useState(new Animated.Value(0))
 
-    useEffect(()=>{
-        
-    }, [value,barMAXWidth,currentProgressAnimation])
+    useEffect(() => {
+
+        return (() => {
+            value.stopAnimation()
+        })
+    }, [value, barMAXWidth, currentProgressAnimation])
 
     // const startAnimation = () => {
     //     Animated.timing(value, {
@@ -42,49 +47,49 @@ const ProgressBarsRow = props => {
     //     });
     // }
 
+    const startAnimation = () => {
 
-    var animation =  Animated.loop(
-        Animated.sequence([
-            // Animated.delay(3000),
-            Animated.timing(value, {
-                toValue: barMAXWidth,
-                duration: 2000
-            })
-        ]),
-        {
-            iterations: 5
-        }
-    )
-    // const width = 0
-
-    //     const
-    //         useEffect(() => {
-
-    // }, [currentProgressAnimation])
-
-
+        Animated.timing(value, {
+            toValue: barMAXWidth,
+            duration: 2000
+        }).start((event) => {
+            value.setValue(0)
+            currentProgressCount > filledBars ? null : startAnimation()
+        })
+    }
+    setTimeout(()=>{
+        setcurrentProgressCount(currentProgressCount+1)
+    },2000)
     var width = value.interpolate({
         inputRange: [0, barMAXWidth],
         outputRange: [0, barMAXWidth],
     })
 
+    if (barMAXWidth > 0 && !isAnimationStarted) {
+        console.log("animation starte")
+        startAnimation()
+        setIsAnimationStarted(true)
+    }
+    
     return (
 
         <View style={containerStyle}>
-
-            {Array.from(Array(Math.floor(filledBars > totalBars ? totalBars : filledBars)), (value, key) => {
+            <Text>{currentProgressCount}</Text>
+            {Array.from(Array(Math.floor(currentProgressCount)), (value, key) => {
+                return <View style={[styles.singleBarStyle, filledBarStyle]} key={key}></View>
+            })}
+            {Array.from(Array(Math.floor(filledBars > totalBars ? totalBars : (filledBars-currentProgressCount))), (value, key) => {
                 return <View style={[styles.singleBarStyle, unFilledBarStyle]} key={key} onLayout={(event) => {
+                    console.log("key and value ", key, value)
                     if (!isLayoutCalculated) {
-                        // setBarMAXWidth(event.nativeEvent.layout.width)
-                        barMAXWidth = event.nativeEvent.layout.width
-                        animation.start((endResult)=>{
-                            if(endResult.finished){
-                                console.log("animation completed")
-                            }
-                        })
+                        console.log("layout calculated")
+                        setBarMAXWidth(event.nativeEvent.layout.width)
+                        // barMAXWidth = event.nativeEvent.layout.width
                         setIsLayoutCalculated(true)
+                    } else {
+                        // console.log("bar max width" + barMAXWidth)
                     }
-                }}><Animated.View style={[styles.singleBarStyle, filledBarStyle, { flex: 1, marginRight: 0, width: width }]} /></View>
+                }}><Animated.View style={[styles.singleBarStyle, filledBarStyle, { flex: 1, marginRight: 0, width: currentProgressCount == key ? width : 0 }]} /></View>
             })}
             {Array.from(Array(Math.floor(UNFILLED_BARS > totalBars ? totalBars : UNFILLED_BARS)), (value, key) => {
                 return <View style={[styles.singleBarStyle, unFilledBarStyle]} key={key}></View>

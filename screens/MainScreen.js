@@ -1,12 +1,58 @@
-import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet } from 'react-native';
+import React, { useState } from "react";
+import { TouchableOpacity, View, Text, StyleSheet, Animated, Dimensions } from 'react-native';
+import { SafeAreaView } from "react-navigation";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 
 const MainScreen = props => {
+
+    const [barMAXWidth, setBarMAXWidth] = useState(0)
+    const [barMaxHeight, setBarMaxHeight] = useState(0)
+    const [isLayoutCalculated, setIsLayoutCalculated] = useState(false)
+    const [isAnimationStarted, setIsAnimationStarted] = useState(false)
+    const [value] = useState(new Animated.Value(0))
+
+    const startAnimation = () => {
+        Animated.timing(value, {
+            delay: 2000,
+            toValue: 1,
+            duration: 2000
+        }).start()
+    }
+
+    if (barMAXWidth > 0 && !isAnimationStarted) {
+        console.log("animation starte")
+        startAnimation()
+        setIsAnimationStarted(true)
+    }
+
+    // const scale = {
+    //     transform: [
+    //       {
+    //         scaleX: value.interpolate({
+    //           inputRange: [0, 1],
+    //           outputRange: [1, 4]
+    //         })
+    //       }
+    //     ]
+    //   };
+
+    const width = value.interpolate({
+        inputRange: [0, 1],
+        outputRange: [70, Dimensions.get('screen').width - 40]
+    })
+
+    const heightt = value.interpolate({
+        inputRange: [0, 1],
+        outputRange: [70, barMaxHeight]
+    })
+
     return (
-        <View style={styles.screen}>
+        <ScrollView contentContainerStyle={styles.screen}>
+
             <View style={styles.btnContainer}>
+                
                 <TouchableOpacity
                     style={styles.btn}
                     onPress={() => {
@@ -99,8 +145,27 @@ const MainScreen = props => {
                     }}>
                     <Text> BottomSheetAnimation </Text>
                 </TouchableOpacity>
+                <View
+                    style={{ marginHorizontal: 20, backgroundColor: "yellow", width: Dimensions.get('screen').width - 40, alignItems: "center" }}
+                    onLayout={(event) => {
+                        if (!isLayoutCalculated) {
+                            console.log("layout calculated")
+                            setBarMAXWidth(event.nativeEvent.layout.width)
+                            setBarMaxHeight(event.nativeEvent.layout.height)
+                            // barMAXWidth = event.nativeEvent.layout.width
+                            setIsLayoutCalculated(true)
+                        } else {
+                            // console.log("bar max width" + barMAXWidth)
+                        }
+                    }}>
+                    <Animated.View style={[styles.tooltipContainer, {padding:20, width: width, borderRadius: barMaxHeight/2, backgroundColor: "red", overflow: "hidden" }]}><View style={{flexDirection:"row"}}><Text style={{flex:1,flexWrap:'wrap'}}>Hellow sfsdkjf  sdfsdf dfs sfdsdf screen
+                    Hellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screen
+                    Hellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screenHellow sfsdkjf  sdfsdf dfs sfdsdf screen
+                    </Text></View></Animated.View>
+                </View>
             </View>
-        </View>
+
+        </ScrollView>
     );
 };
 
@@ -114,7 +179,7 @@ MainScreen.navigationOptions = (navigationData) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        alignItems:"center",
+        alignItems: "center",
     },
     btnContainer: {
         width: "80%",
@@ -130,8 +195,11 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         height: 40,
         alignItems: "center",
-        justifyContent:"center",
+        justifyContent: "center",
         padding: 10,
+    },
+    tooltipContainer: {
+        minHeight: 70,
     }
 });
 
